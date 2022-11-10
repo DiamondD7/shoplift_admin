@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: #202020;
+  font-family: "DM Sans", sans-serif;
+}
+
+.title {
+  margin: 0 0 50px 0;
+}
+
+.u-lists {
+  list-style: none;
+}
+
+.first {
+  margin: 70px 0 0 30px;
+}
+
+.first li {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.first li a {
+  text-decoration: none;
+}
+
+.second {
+  margin: 70px 0 0 30px;
+}
+
+.second li {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.second li a {
+  text-decoration: none;
+}
+
+.homepage {
+  font-size: 24px;
+  text-decoration: none;
+  margin: 20px 0 0 30px;
+}
+
+.container {
+  display: flex;
+}
+
+.nav-container {
+  width: 400px;
+  height: 100vh;
+  background-color: #e2e2e2;
+}
+
+/* --------------------TABLE */
