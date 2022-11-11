@@ -8,6 +8,22 @@
   font-family: "DM Sans", sans-serif;
 }
 
+.div--background {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+    url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80");
+
+  width: 80%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  z-index: -1;
+}
+
 .title {
   margin: 0 0 50px 0;
 }
@@ -58,4 +74,131 @@
   background-color: #e2e2e2;
 }
 
-/* --------------------TABLE */
+/* --------------------MODAL */
+
+.Modal {
+  width: 900px;
+  height: 900px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  background-color: #e2e2e2;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.9);
+  z-index: 3;
+}
+
+.modal-form {
+  padding: 40px;
+}
+
+.form-label {
+  text-transform: uppercase;
+}
+
+.modal-input {
+  width: 70%;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid #202020;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.modal-description-input {
+  min-width: 90%;
+  max-width: 90%;
+  min-height: 300px;
+  max-height: 300px;
+}
+
+.btn-add {
+  background-color: #3356f3;
+  border: 1px solid #3356f3;
+  color: #e2e2e2;
+  font-size: 24px;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100px;
+  cursor: pointer;
+
+  position: absolute;
+  top: 52px;
+  left: 420px;
+}
+
+.btn-update {
+  background-color: limegreen;
+  border: 1px solid limegreen;
+  color: #e2e2e2;
+  font-size: 24px;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.btn-update:hover {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.7);
+  transition: all 0.3s ease-in;
+}
+
+.btn-cancel {
+  background-color: red;
+  border: 1px solid red;
+  color: #e2e2e2;
+  font-size: 24px;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background-color: red;
+  border: 1px solid red;
+  color: #e2e2e2;
+  font-size: 24px;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100px;
+  cursor: pointer;
+}
+
+.btn-no {
+  background-color: orange;
+  border: 1px solid orange;
+  color: #e2e2e2;
+  font-size: 24px;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.btns-div {
+  margin-top: 20px;
+}
+
+.delete-div {
+  text-align: center;
+  margin-top: 200px;
+}
+
+.delete-statement {
+  font-size: 44px;
+}
+
+.delete-btns {
+  margin-top: 50px;
+}
+
+.emoji {
+  margin-top: 20px;
+  font-size: 28px;
+}
