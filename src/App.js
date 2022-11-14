@@ -6,6 +6,7 @@ import Hoodies from "./components/Hoodies";
 import Shirts from "./components/Shirts";
 import Accessories from "./components/Accessories";
 import Shoes from "./components/Shoes";
+import Wdress from "./components/Women/Wdress";
 const App = () => {
   let component;
   switch (window.location.pathname) {
@@ -31,6 +32,9 @@ const App = () => {
       break;
     case "/shoes":
       component = <Shoes />;
+      break;
+    case "/wdress":
+      component = <Wdress />;
       break;
     default:
       console.log("Error in switch");
@@ -61,7 +65,11 @@ const App = () => {
             <li>
               <a href="/shoes">Shoes</a>
             </li>
+            <li>
+              <a href="/wdress">Women's dress</a>
+            </li>
           </ul>
+
           <ul className="u-lists second">
             <h2>Users</h2>
             <li>
