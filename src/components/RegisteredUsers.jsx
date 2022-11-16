@@ -16,7 +16,7 @@ const RegisteredUsers = () => {
   const [usersID, setUsersID] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/users/")
+    fetch("https://shopliftserver.azurewebsites.net/users/")
       .then((res) => res.json())
       .then((data) => {
         setItems(data);
@@ -45,7 +45,7 @@ const RegisteredUsers = () => {
   };
 
   const updateData = (id) => {
-    fetch("http://localhost:5000/users/update/" + id, {
+    fetch("https://shopliftserver.azurewebsites.net/users/update/" + id, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const RegisteredUsers = () => {
   };
 
   const deleteData = (id) => {
-    fetch("http://localhost:5000/users/delete/" + id, {
+    fetch("https://shopliftserver.azurewebsites.net/users/delete/" + id, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -78,7 +78,7 @@ const RegisteredUsers = () => {
   };
 
   const addData = () => {
-    fetch("http://localhost:5000/users/add", {
+    fetch("https://shopliftserver.azurewebsites.net/users/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

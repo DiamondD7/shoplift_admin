@@ -8,42 +8,9 @@ import Accessories from "./components/Accessories";
 import Shoes from "./components/Shoes";
 import Wdress from "./components/Women/Wdress";
 import Whoodies from "./components/Women/Whoodies";
+
+import { Route, Routes } from "react-router-dom";
 const App = () => {
-  let component;
-  switch (window.location.pathname) {
-    case "/":
-      component = <Home />;
-      break;
-    case "/registeredusers":
-      component = <RegisteredUsers />;
-      break;
-
-    case "/jackets":
-      component = <Jackets />;
-      break;
-
-    case "/hoodies":
-      component = <Hoodies />;
-      break;
-    case "/shirts":
-      component = <Shirts />;
-      break;
-    case "/accessories":
-      component = <Accessories />;
-      break;
-    case "/shoes":
-      component = <Shoes />;
-      break;
-    case "/wdress":
-      component = <Wdress />;
-      break;
-    case "/whoodies":
-      component = <Whoodies />;
-      break;
-    default:
-      console.log("Error in switch");
-      break;
-  }
   return (
     <div>
       <div className="container">
@@ -52,6 +19,7 @@ const App = () => {
           <a className="homepage" href="/">
             Home
           </a>
+
           <ul className="u-lists first">
             <h2>Men</h2>
             <li>
@@ -89,7 +57,23 @@ const App = () => {
             </li>
           </ul>
         </div>
-        <div className="component-container">{component}</div>
+        <div className="component-container">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/jackets" element={<Jackets />} />
+            <Route
+              exact
+              path="/registeredusers"
+              element={<RegisteredUsers />}
+            />
+            <Route exact path="/hoodies" element={<Hoodies />} />
+            <Route exact path="/shirts" element={<Shirts />} />
+            <Route exact path="/accessories" element={<Accessories />} />
+            <Route exact path="/shoes" element={<Shoes />} />
+            <Route exact path="/wdress" element={<Wdress />} />
+            <Route exact path="/whoodies" element={<Whoodies />} />
+          </Routes>
+        </div>
       </div>
     </div>
   );

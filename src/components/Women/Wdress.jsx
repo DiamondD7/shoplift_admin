@@ -16,7 +16,7 @@ const Wdress = () => {
   const [productID, setProductID] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/wdress/")
+    fetch("https://shopliftserver.azurewebsites.net/wdress/")
       .then((res) => res.json())
       .then((data) => {
         setItems(data);
@@ -45,7 +45,7 @@ const Wdress = () => {
   };
 
   const updateData = (id) => {
-    fetch("http://localhost:5000/wdress/edit/" + id, {
+    fetch("https://shopliftserver.azurewebsites.net/wdress/edit/" + id, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const Wdress = () => {
   };
 
   const deleteData = (id) => {
-    fetch("http://localhost:5000/wdress/delete/" + id, {
+    fetch("https://shopliftserver.azurewebsites.net/wdress/delete/" + id, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -78,7 +78,7 @@ const Wdress = () => {
   };
 
   const addData = () => {
-    fetch("http://localhost:5000/wdress/add", {
+    fetch("https://shopliftserver.azurewebsites.net/wdress/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
