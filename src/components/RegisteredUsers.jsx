@@ -4,6 +4,7 @@ import "../tablestyle.css";
 
 const RegisteredUsers = () => {
   const [items, setItems] = useState([]);
+  const [itemLoaded, setItemLoaded] = useState(false);
   const [addOpenModal, setAddOpenModal] = useState(false);
   const [updateOpenModal, setUpdateOpenModal] = useState(false);
   const [deleteOpenModal, setDeleteOpenModal] = useState(false);
@@ -20,6 +21,7 @@ const RegisteredUsers = () => {
       .then((res) => res.json())
       .then((data) => {
         setItems(data);
+        setItemLoaded(true);
         console.log(data);
       });
   }, []);
@@ -101,159 +103,170 @@ const RegisteredUsers = () => {
   };
   return (
     <div>
-      <button className="btn-add" onClick={addModalOpen}>
-        Add
-      </button>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Username</th>
-            <th>Password</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {items.map((i, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>
-                {i.firstName} {i.lastName}
-              </td>
-              <td>{i.email}</td>
-              <td>{i.phoneNumber}</td>
-              <td>{i.username}</td>
-              <td>{i.password}</td>
-              <td>
-                <button className="edit-btn" onClick={() => updateModalOpen(i)}>
-                  <Pen size={32} color={"Orange"} />
-                </button>
-                <button
-                  className="delete-btn"
-                  onClick={() => deleteModalOpen(i)}
-                >
-                  <Trash size={32} color={"red"} />
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {itemLoaded === true ? (
+        <div>
+          <button className="btn-add" onClick={addModalOpen}>
+            Add
+          </button>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {items.map((i, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>
+                    {i.firstName} {i.lastName}
+                  </td>
+                  <td>{i.email}</td>
+                  <td>{i.phoneNumber}</td>
+                  <td>{i.username}</td>
+                  <td>{i.password}</td>
+                  <td>
+                    <button
+                      className="edit-btn"
+                      onClick={() => updateModalOpen(i)}
+                    >
+                      <Pen size={32} color={"Orange"} />
+                    </button>
+                    <button
+                      className="delete-btn"
+                      onClick={() => deleteModalOpen(i)}
+                    >
+                      <Trash size={32} color={"red"} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
-      {updateOpenModal || deleteOpenModal || addOpenModal ? (
-        <div className="Modal">
-          {deleteOpenModal ? (
-            <div className="delete-div">
-              <h2 className="delete-statement">
-                Are you sure you want to delete?
-              </h2>
-              <p className="emoji">¯\_( ͡° ͜ʖ ͡°)_/¯</p>
-              <div className="delete-btns">
-                <button
-                  className="btn-no"
-                  onClick={() => setDeleteOpenModal(false)}
-                >
-                  No
-                </button>
-                <button
-                  className="btn-delete"
-                  onClick={() => deleteData(usersID)}
-                >
-                  Yes
-                </button>
-              </div>
-            </div>
-          ) : (
-            ""
-          )}
-          {updateOpenModal || addOpenModal ? (
-            <form
-              className="modal-form"
-              onSubmit={
-                updateOpenModal === true ? updateData(usersID) : addData
-              }
-            >
-              <h1>{updateOpenModal ? "Edit" : "Add"}</h1>
-              <label className="form-label">First name</label>
-              <br />
-              <input
-                className="modal-input"
-                type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-              <br />
-              <label className="form-label">Last name</label>
-              <br />
-              <input
-                className="modal-input"
-                type="text"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-              <br />
-              <label className="form-label">Email</label>
-              <br />
-              <input
-                className="modal-input"
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <br />
-              <label className="form-label">Phone number</label>
-              <br />
-              <input
-                className="modal-input"
-                type="text"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-              />
-              <br />
-
-              <label className="form-label">Username</label>
-              <br />
-              <input
-                className="modal-input"
-                type="text"
-                value={username}
-                onChange={(e) => setUserame(e.target.value)}
-              />
-              <br />
-              <label className="form-label">Password</label>
-              <br />
-              <input
-                className="modal-input"
-                type="text"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-
-              <div className="btns-div">
-                <button
-                  className="btn-cancel"
-                  onClick={
-                    updateOpenModal
-                      ? () => setUpdateOpenModal(false)
-                      : () => setAddOpenModal(false)
+          {updateOpenModal || deleteOpenModal || addOpenModal ? (
+            <div className="Modal">
+              {deleteOpenModal ? (
+                <div className="delete-div">
+                  <h2 className="delete-statement">
+                    Are you sure you want to delete?
+                  </h2>
+                  <p className="emoji">¯\_( ͡° ͜ʖ ͡°)_/¯</p>
+                  <div className="delete-btns">
+                    <button
+                      className="btn-no"
+                      onClick={() => setDeleteOpenModal(false)}
+                    >
+                      No
+                    </button>
+                    <button
+                      className="btn-delete"
+                      onClick={() => deleteData(usersID)}
+                    >
+                      Yes
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+              {updateOpenModal || addOpenModal ? (
+                <form
+                  className="modal-form"
+                  onSubmit={
+                    updateOpenModal === true ? updateData(usersID) : addData
                   }
                 >
-                  Cancel
-                </button>
-                <button className="btn-update">
-                  {updateOpenModal ? "Update" : "Add"}
-                </button>
-              </div>
-            </form>
+                  <h1>{updateOpenModal ? "Edit" : "Add"}</h1>
+                  <label className="form-label">First name</label>
+                  <br />
+                  <input
+                    className="modal-input"
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                  <br />
+                  <label className="form-label">Last name</label>
+                  <br />
+                  <input
+                    className="modal-input"
+                    type="text"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                  <br />
+                  <label className="form-label">Email</label>
+                  <br />
+                  <input
+                    className="modal-input"
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <br />
+                  <label className="form-label">Phone number</label>
+                  <br />
+                  <input
+                    className="modal-input"
+                    type="text"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                  />
+                  <br />
+
+                  <label className="form-label">Username</label>
+                  <br />
+                  <input
+                    className="modal-input"
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUserame(e.target.value)}
+                  />
+                  <br />
+                  <label className="form-label">Password</label>
+                  <br />
+                  <input
+                    className="modal-input"
+                    type="text"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+
+                  <div className="btns-div">
+                    <button
+                      className="btn-cancel"
+                      onClick={
+                        updateOpenModal
+                          ? () => setUpdateOpenModal(false)
+                          : () => setAddOpenModal(false)
+                      }
+                    >
+                      Cancel
+                    </button>
+                    <button className="btn-update">
+                      {updateOpenModal ? "Update" : "Add"}
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                ""
+              )}
+            </div>
           ) : (
             ""
           )}
         </div>
       ) : (
-        ""
+        <div className="loading">
+          <p>Loading...</p>
+        </div>
       )}
     </div>
   );
